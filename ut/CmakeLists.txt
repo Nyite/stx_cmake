@@ -1,0 +1,10 @@
+project(STX_ut)
+
+file(GLOB_RECURSE SRC_FILES *_ut.cpp)
+add_executable(STX_ut ${SRC_FILES})
+
+target_link_system_library(STX_ut PUBLIC STX)
+
+target_link_system_library(STX_ut PRIVATE gtest_main)
+include(GoogleTest)
+gtest_discover_tests(STX_ut)

@@ -1,0 +1,24 @@
+cmake_minimum_required(VERSION 3.21)
+
+set(CMAKE_CXX_STANDARD 20)
+set(CMAKE_CXX_EXTENSIONS OFF)
+
+project(STX)
+
+include(cmake/Dependencies.cmake)
+load_dependencies()
+
+file(GLOB_RECURSE SRC_FILES src/*.cpp)
+add_library(STX STATIC ${SRC_FILES})
+target_include_directories(STX PUBLIC include)
+
+target_link_system_library(STX PRIVATE fmt)
+
+include(cmake/ProjectOptions.cmake)
+apply_project_options(STX)
+
+if(STX_BUILD_TESTS)
+    include(CTest)
+    enable_testing()
+    add_subdirectory(ut)
+endif()
