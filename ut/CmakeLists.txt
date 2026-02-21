@@ -5,6 +5,6 @@ add_executable(STX_ut ${SRC_FILES})
 
 target_link_system_library(STX_ut PUBLIC STX)
 
-target_link_system_library(STX_ut PRIVATE gtest_main)
+target_link_libraries(STX_ut PRIVATE gtest_main)
 include(GoogleTest)
 gtest_discover_tests(STX_ut)

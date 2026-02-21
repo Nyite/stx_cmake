@@ -3,15 +3,20 @@ function(load_dependencies)
     include(cmake/SystemLink.cmake)
 
     # Load fmt
-    CPMAddPackage("gh:fmtlib/fmt#10.2.1")
+    CPMAddPackage(
+        NAME fmt
+        GIT_TAG 6.1.2
+        GITHUB_REPOSITORY fmtlib/fmt
+    )
 
     # Load GTest
     CPMAddPackage(
-        NAME googletest
-        GITHUB_REPOSITORY google/googletest
-        VERSION 1.14.0
-        OPTIONS
-            "INSTALL_GTEST OFF"
-            "gtest_force_shared_crt ON"
+    NAME googletest
+    GITHUB_REPOSITORY google/googletest
+    GIT_TAG release-1.8.1
+    VERSION 1.8.1
+    OPTIONS
+        "INSTALL_GTEST OFF"
+        "gtest_force_shared_crt ON"
     )
 endfunction()
